@@ -18,47 +18,33 @@ struct MyCredidtManager {
         while true {
             
             printMessage(with: .mainPrompt)
-            
-            let command = readLine()
                         
-            if isExit(command) {
-                printMessage(with: .exit)
-                exit(0)
-            }
-            
-            if !isValid(command) {
+            guard let command = readLine(), let menu = MainMenu(rawValue: command) else {
                 printMessage(with: .notValid)
                 continue
             }
             
-            addStudent()
-            
+            switch menu {
+            case .addStuduent:
+                print("학생 추가")
+            case .deleteStudent:
+                print("학생 삭제")
+            case .addGrade:
+                print("성적추가(변경)")
+            case .deleteGrade:
+                print("성적 삭제")
+            case .showGrade:
+                print("평점보기")
+            case .exit:
+                printMessage(with: .exit)
+                exit(0)
+            }
         }
     }
-    
-    func addStudent() {
-        
-    }
-    
 }
 
 // MARK: - Util
 extension MyCredidtManager {
-    private func isExit(_ command:String?) -> Bool {
-        command == "X" || command == "x"
-    }
-    
-    private func isValid(_ command:String?) -> Bool {
-        guard let inputToNumber = Int(command ?? "") else {
-            return false
-        }
-        
-        if !(1...MainMenu.allCases.count - 1).contains(inputToNumber) {
-            return false
-        }
-        
-        return true
-    }
     
     private func printMessage(with message:Message) {
         print(message.description)
@@ -67,13 +53,13 @@ extension MyCredidtManager {
 
 // MARK: - MainMenu
 extension MyCredidtManager {
-    enum MainMenu:CaseIterable {
-        case addStuduent
-        case deleteStudent
-        case addGrade
-        case deleteGrade
-        case showGrade
-        case exit
+    enum MainMenu:String,CaseIterable {
+        case addStuduent = "1"
+        case deleteStudent = "2"
+        case addGrade = "3"
+        case deleteGrade = "4"
+        case showGrade = "5"
+        case exit = "X"
         
         private var title:String {
             switch self {
