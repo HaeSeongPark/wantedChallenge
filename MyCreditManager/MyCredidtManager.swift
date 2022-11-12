@@ -9,11 +9,6 @@ import Foundation
 
 struct MyCredidtManager {
     
-    let mainPrompt:String = """
-            원하는 기능 입력해주세요
-            \(MainMenu.allTitle)
-            """
-    
     func start() {
         while true {
             
