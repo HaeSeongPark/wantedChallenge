@@ -21,7 +21,7 @@ struct MyCredidtManager {
             
             switch menu {
             case .addStuduent:
-                print("학생 추가")
+                addStudent()
             case .deleteStudent:
                 print("학생 삭제")
             case .addGrade:
@@ -35,6 +35,16 @@ struct MyCredidtManager {
                 exit(0)
             }
         }
+    }
+    
+    private func addStudent() {
+        printMessage(with: .addStudent)
+        guard let command = readLine(), !command.isEmpty else {
+            printMessage(with: .invalidInput)
+            return
+        }
+        
+        print("학생이름 \(command)")
     }
 }
 
@@ -85,7 +95,8 @@ extension MyCredidtManager {
         case exit
         case invalidInputForMain
         case addStudent
-        
+        case invalidInput
+
         var description:String {
             switch self {
             case .mainPrompt:
@@ -99,6 +110,8 @@ extension MyCredidtManager {
                 return  "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요."
             case .addStudent:
                 return "추가할 학생의 이름을 입력해주세요"
+            case .invalidInput:
+                return "입력이 잘못되었습니다. 다시 확인해주세요"
             }
         }
     }
