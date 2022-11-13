@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		974F7601291E5F0B00FC097B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F7600291E5F0B00FC097B /* main.swift */; };
 		974F7608291E694F00FC097B /* MyCredidtManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F7607291E694F00FC097B /* MyCredidtManager.swift */; };
+		974F760A2920D4E500FC097B /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F76092920D4E500FC097B /* Student.swift */; };
+		974F760C2920D70200FC097B /* Grades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F760B2920D70200FC097B /* Grades.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,8 @@
 		974F75FD291E5F0B00FC097B /* MyCreditManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MyCreditManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		974F7600291E5F0B00FC097B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		974F7607291E694F00FC097B /* MyCredidtManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCredidtManager.swift; sourceTree = "<group>"; };
+		974F76092920D4E500FC097B /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		974F760B2920D70200FC097B /* Grades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grades.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 			children = (
 				974F7600291E5F0B00FC097B /* main.swift */,
 				974F7607291E694F00FC097B /* MyCredidtManager.swift */,
+				974F76092920D4E500FC097B /* Student.swift */,
+				974F760B2920D70200FC097B /* Grades.swift */,
 			);
 			path = MyCreditManager;
 			sourceTree = "<group>";
@@ -124,6 +130,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				974F7601291E5F0B00FC097B /* main.swift in Sources */,
+				974F760C2920D70200FC097B /* Grades.swift in Sources */,
+				974F760A2920D4E500FC097B /* Student.swift in Sources */,
 				974F7608291E694F00FC097B /* MyCredidtManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
