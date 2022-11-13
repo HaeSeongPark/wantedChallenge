@@ -15,7 +15,7 @@ struct MyCredidtManager {
             printMessage(with: .mainPrompt)
                         
             guard let command = readLine(), let menu = MainMenu(rawValue: command) else {
-                printMessage(with: .notValid)
+                printMessage(with: .invalidInputForMain)
                 continue
             }
             
@@ -83,7 +83,7 @@ extension MyCredidtManager {
     enum Message {
         case mainPrompt
         case exit
-        case notValid
+        case invalidInputForMain
         case addStudent
         
         var description:String {
@@ -95,7 +95,7 @@ extension MyCredidtManager {
                 """
             case .exit:
                 return "프로그램을 종료합니다..."
-            case .notValid:
+            case .invalidInputForMain:
                 return  "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요."
             case .addStudent:
                 return "추가할 학생의 이름을 입력해주세요"
