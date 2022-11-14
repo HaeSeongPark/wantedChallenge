@@ -9,7 +9,7 @@ import Foundation
 
 struct Student {
     typealias ReportCard = (name:String, grade:String)
-    private let name:String
+    let name:String
     private var reportCard:[ReportCard] = []
     
     private var average:Double {

@@ -7,4 +7,5 @@
 
 import Foundation
 
-MyCredidtManager().start()
+var myCredidtManager = MyCredidtManager()
+myCredidtManager.start()

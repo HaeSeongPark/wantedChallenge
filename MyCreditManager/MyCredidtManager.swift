@@ -9,7 +9,10 @@ import Foundation
 
 struct MyCredidtManager {
     
-    func start() {
+    private var studentManager = StudentManager()
+    
+    mutating func start() {
+        
         while true {
             
             printMessage(with: .mainPrompt)
@@ -37,14 +40,21 @@ struct MyCredidtManager {
         }
     }
     
-    private func addStudent() {
+    private mutating func addStudent() {
         printMessage(with: .addStudent)
-        guard let command = readLine(), !command.isEmpty else {
+        guard let name = readLine(), !name.isEmpty else {
             printMessage(with: .invalidInput)
             return
         }
         
-        print("학생이름 \(command)")
+        
+        if studentManager.addStudent(with: name) {
+            printMessage(with: .successOfAddStudent(name: name))
+        } else {
+            printMessage(with: .duplicatedName(name: name))
+        }
+        
+        return
     }
 }
 
@@ -96,6 +106,8 @@ extension MyCredidtManager {
         case invalidInputForMain
         case addStudent
         case invalidInput
+        case successOfAddStudent(name:String)
+        case duplicatedName(name:String)
 
         var description:String {
             switch self {
@@ -112,6 +124,10 @@ extension MyCredidtManager {
                 return "추가할 학생의 이름을 입력해주세요"
             case .invalidInput:
                 return "입력이 잘못되었습니다. 다시 확인해주세요"
+            case .successOfAddStudent(let name):
+                return "\(name) 학생을 추가했습니다."
+            case .duplicatedName(let name):
+                return "\(name)은 이미 존자해는 학생입니다. 추가하지 않습니다."
             }
         }
     }
