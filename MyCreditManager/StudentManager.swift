@@ -22,4 +22,12 @@ struct StudentManager {
         
         return true
     }
+    
+    mutating func deleteStudent(with name:String) -> Bool {
+        guard let indexToDelete = self.students.firstIndex(where: { $0.name == name}) else {
+            return false
+        }
+        self.students.remove(at: indexToDelete)
+        return true
+    }
 }

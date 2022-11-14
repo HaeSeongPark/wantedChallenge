@@ -26,7 +26,7 @@ struct MyCredidtManager {
             case .addStuduent:
                 addStudent()
             case .deleteStudent:
-                print("학생 삭제")
+                deleteStudent()
             case .addGrade:
                 print("성적추가(변경)")
             case .deleteGrade:
@@ -55,6 +55,22 @@ struct MyCredidtManager {
         }
         
         return
+    }
+    
+    private mutating func deleteStudent() {
+        printMessage(with: .deleteStudent)
+        
+        guard let name = readLine(), !name.isEmpty else {
+            printMessage(with: .invalidInput)
+            return
+        }
+        
+        if studentManager.deleteStudent(with: name) {
+            printMessage(with: .successOfDeleteStudent(name: name))
+        } else {
+            printMessage(with: .nonexistentStudent(name: name))
+        }
+        
     }
 }
 
@@ -108,6 +124,9 @@ extension MyCredidtManager {
         case invalidInput
         case successOfAddStudent(name:String)
         case duplicatedName(name:String)
+        case deleteStudent
+        case successOfDeleteStudent(name:String)
+        case nonexistentStudent(name:String)
 
         var description:String {
             switch self {
@@ -128,6 +147,12 @@ extension MyCredidtManager {
                 return "\(name) 학생을 추가했습니다."
             case .duplicatedName(let name):
                 return "\(name)은 이미 존자해는 학생입니다. 추가하지 않습니다."
+            case .deleteStudent:
+                return "삭제할 학생의 이름을 입력해주세요"
+            case .successOfDeleteStudent(let name):
+                return "\(name) 학생을 삭제하였습니다."
+            case .nonexistentStudent(let name):
+                return "\(name) 학생을 찾지 못했습니다."
             }
         }
     }
