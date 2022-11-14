@@ -43,6 +43,15 @@ struct StudentManager {
         return true
     }
     
+    mutating func deleteReportToStudent(studentName:String,
+                                        subjectName:String) -> Bool {
+        guard let student = self.students.first(where: { $0.name == studentName}) else {
+            return false
+        }
+        student.deleteReport(name: subjectName)
+        return true
+    }
+    
     func showReport(of name:String) -> Bool {
         guard let student = self.students.first(where: { $0.name == name}) else {
             return false

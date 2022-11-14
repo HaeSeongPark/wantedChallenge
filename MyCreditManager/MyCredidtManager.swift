@@ -16,7 +16,7 @@ struct MyCredidtManager {
         while true {
             
             printMessage(with: .mainPrompt)
-                        
+            
             guard let command = readLine(), let menu = MainMenu(rawValue: command) else {
                 printMessage(with: .invalidInputForMain)
                 continue
@@ -30,7 +30,7 @@ struct MyCredidtManager {
             case .addGrade:
                 addReportToStudent()
             case .deleteGrade:
-                print("성적 삭제")
+                deleteReportToStudent()
             case .showGrade:
                 showReport()
             case .exit:
@@ -80,12 +80,41 @@ struct MyCredidtManager {
         let subjectName:String = splitedCommand[1]
         
         let result = studentManager.addReportToStudent(studentName: studentName,
-                                          subjectName: subjectName,
-                                          subjectGrade: subjectGrade)
+                                                       subjectName: subjectName,
+                                                       subjectGrade: subjectGrade)
         if result {
             printMessage(with: .successofAddReportToStudent(studentName: studentName,
                                                             subjectName: subjectName,
                                                             subjectGrade: subjectGrade))
+        } else {
+            printMessage(with: .nonexistentStudent(name: studentName))
+        }
+        
+    }
+    
+    private mutating func deleteReportToStudent() {
+        printMessage(with: .deleteReportToStudent)
+        guard let command = readLine(), !command.isEmpty else {
+            printMessage(with: .invalidInput)
+            return
+        }
+        
+        let splitedCommand = command.split(separator: " ").map { String($0)}
+        
+        guard splitedCommand.count == 2 else {
+            printMessage(with: .invalidInput)
+            return
+        }
+        
+        
+        let studentName:String = splitedCommand[0]
+        let subjectName:String = splitedCommand[1]
+        
+        let result = studentManager.deleteReportToStudent(studentName: studentName,
+                                                       subjectName: subjectName)
+        if result {
+            printMessage(with: .successOfDeleteReportToStudent(studentName: studentName,
+                                                            subjectName: subjectName))
         } else {
             printMessage(with: .nonexistentStudent(name: studentName))
         }
@@ -180,7 +209,10 @@ extension MyCredidtManager {
         case successofAddReportToStudent(studentName:String,
                                          subjectName:String,
                                          subjectGrade:Grade)
-
+        case deleteReportToStudent
+        case successOfDeleteReportToStudent(studentName:String,
+                                            subjectName:String)
+        
         var description:String {
             switch self {
             case .mainPrompt:
@@ -216,6 +248,13 @@ extension MyCredidtManager {
                 return "평점을 알고싶은 학생의 이름을 입력해주세요"
             case .successofAddReportToStudent(let studnetName, let subjectName, let subjectGrade):
                 return "\(studnetName) 학생의 \(subjectName) 과목이. \(subjectGrade.rawValue)로 추가(변경)되었습니다."
+            case .deleteReportToStudent:
+                return """
+                성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.
+                입력예) Mickey Swift
+                """
+            case .successOfDeleteReportToStudent(let studentName, let subjectName):
+                return "\(studentName) 학생의 \(subjectName) 과목의 성적이 삭제되었습니다."
             }
         }
     }

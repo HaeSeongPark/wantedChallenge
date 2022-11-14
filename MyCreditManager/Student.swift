@@ -39,6 +39,9 @@ final class Student {
     }
     
     func showReport() -> String {
+        guard !reportCard.isEmpty else {
+            return "보여줄 성적이 없습니다."
+        }
         let allReport = reportCard.map { "\($0.name): \($0.grade.rawValue)"}.joined(separator: "\n")
         return allReport + "\n\(averageReport)"
     }
