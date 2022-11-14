@@ -8,7 +8,7 @@
 import Foundation
 
 final class Student {
-    typealias ReportCard = (name:String, grade:Grades)
+    typealias ReportCard = (name:String, grade:Grade)
     let name:String
     private var reportCard:[ReportCard] = []
     
@@ -26,7 +26,7 @@ final class Student {
         self.name = name
     }
     
-    func addReport(name:String, grade:Grades) {
+    func addReport(name:String, grade:Grade) {
         self.reportCard.append((name:name, grade:grade))
     }
     

@@ -33,7 +33,7 @@ struct StudentManager {
     
     mutating func addReportToStudent(studentName:String,
                                      subjectName:String,
-                                     subjectGrade:Grades) -> Bool {
+                                     subjectGrade:Grade) -> Bool {
         guard let student = self.students.first(where: { $0.name == studentName}) else {
             return false
         }

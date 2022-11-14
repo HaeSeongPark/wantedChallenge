@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Grades:String {
+enum Grade:String {
     case aPlus = "A+"
     case a = "A"
     case bPlus = "B+"

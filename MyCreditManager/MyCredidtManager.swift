@@ -71,7 +71,7 @@ struct MyCredidtManager {
             return
         }
         
-        guard let subjectGrade:Grades  = Grades(rawValue: splitedCommand[2]) else {
+        guard let subjectGrade:Grade  = Grade(rawValue: splitedCommand[2]) else {
             printMessage(with: .invalidInput)
             return
         }
@@ -179,7 +179,7 @@ extension MyCredidtManager {
         case showReport
         case successofAddReportToStudent(studentName:String,
                                          subjectName:String,
-                                         subjectGrade:Grades)
+                                         subjectGrade:Grade)
 
         var description:String {
             switch self {

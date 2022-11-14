@@ -10,7 +10,7 @@
 		974F7601291E5F0B00FC097B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F7600291E5F0B00FC097B /* main.swift */; };
 		974F7608291E694F00FC097B /* MyCredidtManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F7607291E694F00FC097B /* MyCredidtManager.swift */; };
 		974F760A2920D4E500FC097B /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F76092920D4E500FC097B /* Student.swift */; };
-		974F760C2920D70200FC097B /* Grades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F760B2920D70200FC097B /* Grades.swift */; };
+		974F760C2920D70200FC097B /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F760B2920D70200FC097B /* Grade.swift */; };
 		974F760E2921E22900FC097B /* StudentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F760D2921E22900FC097B /* StudentManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 		974F7600291E5F0B00FC097B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		974F7607291E694F00FC097B /* MyCredidtManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCredidtManager.swift; sourceTree = "<group>"; };
 		974F76092920D4E500FC097B /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
-		974F760B2920D70200FC097B /* Grades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grades.swift; sourceTree = "<group>"; };
+		974F760B2920D70200FC097B /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		974F760D2921E22900FC097B /* StudentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +68,7 @@
 				974F7600291E5F0B00FC097B /* main.swift */,
 				974F7607291E694F00FC097B /* MyCredidtManager.swift */,
 				974F76092920D4E500FC097B /* Student.swift */,
-				974F760B2920D70200FC097B /* Grades.swift */,
+				974F760B2920D70200FC097B /* Grade.swift */,
 				974F760D2921E22900FC097B /* StudentManager.swift */,
 			);
 			path = MyCreditManager;
@@ -134,7 +134,7 @@
 			files = (
 				974F7601291E5F0B00FC097B /* main.swift in Sources */,
 				974F760E2921E22900FC097B /* StudentManager.swift in Sources */,
-				974F760C2920D70200FC097B /* Grades.swift in Sources */,
+				974F760C2920D70200FC097B /* Grade.swift in Sources */,
 				974F760A2920D4E500FC097B /* Student.swift in Sources */,
 				974F7608291E694F00FC097B /* MyCredidtManager.swift in Sources */,
 			);
