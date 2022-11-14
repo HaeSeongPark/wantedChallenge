@@ -28,11 +28,11 @@ struct MyCredidtManager {
             case .deleteStudent:
                 deleteStudent()
             case .addGrade:
-                print("성적추가(변경)")
+                addReportToStudent()
             case .deleteGrade:
                 print("성적 삭제")
             case .showGrade:
-                print("평점보기")
+                showReport()
             case .exit:
                 printMessage(with: .exit)
                 exit(0)
@@ -55,6 +55,54 @@ struct MyCredidtManager {
         }
         
         return
+    }
+    
+    private mutating func addReportToStudent() {
+        printMessage(with: .addReportToStudent)
+        guard let command = readLine(), !command.isEmpty else {
+            printMessage(with: .invalidInput)
+            return
+        }
+        
+        let splitedCommand = command.split(separator: " ").map { String($0)}
+        
+        guard splitedCommand.count == 3 else {
+            printMessage(with: .invalidInput)
+            return
+        }
+        
+        guard let subjectGrade:Grades  = Grades(rawValue: splitedCommand[2]) else {
+            printMessage(with: .invalidInput)
+            return
+        }
+        
+        let studentName:String = splitedCommand[0]
+        let subjectName:String = splitedCommand[1]
+        
+        let result = studentManager.addReportToStudent(studentName: studentName,
+                                          subjectName: subjectName,
+                                          subjectGrade: subjectGrade)
+        if result {
+            printMessage(with: .successofAddReportToStudent(studentName: studentName,
+                                                            subjectName: subjectName,
+                                                            subjectGrade: subjectGrade))
+        } else {
+            printMessage(with: .nonexistentStudent(name: studentName))
+        }
+        
+    }
+    
+    private mutating func showReport() {
+        printMessage(with: .showReport)
+        
+        guard let name = readLine(), !name.isEmpty else {
+            printMessage(with: .invalidInput)
+            return
+        }
+        
+        if !studentManager.showReport(of:name) {
+            printMessage(with: .nonexistentStudent(name: name))
+        }
     }
     
     private mutating func deleteStudent() {
@@ -127,6 +175,11 @@ extension MyCredidtManager {
         case deleteStudent
         case successOfDeleteStudent(name:String)
         case nonexistentStudent(name:String)
+        case addReportToStudent
+        case showReport
+        case successofAddReportToStudent(studentName:String,
+                                         subjectName:String,
+                                         subjectGrade:Grades)
 
         var description:String {
             switch self {
@@ -153,6 +206,16 @@ extension MyCredidtManager {
                 return "\(name) 학생을 삭제하였습니다."
             case .nonexistentStudent(let name):
                 return "\(name) 학생을 찾지 못했습니다."
+            case .addReportToStudent:
+                return """
+            성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A, F등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
+            입력예) Mickey Swift A+
+            만약에 학생의 성적. 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+            """
+            case .showReport:
+                return "평점을 알고싶은 학생의 이름을 입력해주세요"
+            case .successofAddReportToStudent(let studnetName, let subjectName, let subjectGrade):
+                return "\(studnetName) 학생의 \(subjectName) 과목이. \(subjectGrade.rawValue)로 추가(변경)되었습니다."
             }
         }
     }

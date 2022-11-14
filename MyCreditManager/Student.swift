@@ -7,31 +7,30 @@
 
 import Foundation
 
-struct Student {
-    typealias ReportCard = (name:String, grade:String)
+final class Student {
+    typealias ReportCard = (name:String, grade:Grades)
     let name:String
     private var reportCard:[ReportCard] = []
     
     private var average:Double {
         return reportCard
-            .compactMap { Grades(rawValue: $0.grade) }
-            .map { $0.point }
+            .map { $0.grade.point }
             .reduce(0, +) / Double(reportCard.count)
     }
     
     private var averageReport:String {
-        return String(format: "%.2f", "\(average)")
+        return String(format: "%.2f", average)
     }
     
     init(name:String) {
         self.name = name
     }
     
-    mutating func addReport(name:String, grade:String) {
+    func addReport(name:String, grade:Grades) {
         self.reportCard.append((name:name, grade:grade))
     }
     
-    mutating func deleteReport(name:String) {
+    func deleteReport(name:String) {
         guard let indexToDelete = self.reportCard.firstIndex (where: { $0.name == name }) else {
             return
         }
@@ -40,7 +39,7 @@ struct Student {
     }
     
     func showReport() -> String {
-        let allReport = reportCard.map { "\($0.name): \($0.grade)"}.joined(separator: "\n")
+        let allReport = reportCard.map { "\($0.name): \($0.grade.rawValue)"}.joined(separator: "\n")
         return allReport + "\n\(averageReport)"
     }
 }

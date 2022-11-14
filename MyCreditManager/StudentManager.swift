@@ -30,4 +30,25 @@ struct StudentManager {
         self.students.remove(at: indexToDelete)
         return true
     }
+    
+    mutating func addReportToStudent(studentName:String,
+                                     subjectName:String,
+                                     subjectGrade:Grades) -> Bool {
+        guard let student = self.students.first(where: { $0.name == studentName}) else {
+            return false
+        }
+        
+        student.addReport(name: subjectName, grade: subjectGrade)
+        
+        return true
+    }
+    
+    func showReport(of name:String) -> Bool {
+        guard let student = self.students.first(where: { $0.name == name}) else {
+            return false
+        }
+        
+        print(student.showReport())
+        return true
+    }
 }
